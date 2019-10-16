@@ -3,14 +3,16 @@ package rafaelbarbosatec.poc.listpokemon
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.rafaelbarbosatec.sdk.RepositorySDK
 import com.rafaelbarbosatec.sdk.core.extensions.read
 import com.rafaelbarbosatec.sdk.data.pokemon.model.Pokemon
 import com.rafaelbarbosatec.sdk.data.pokemon.model.TypePokemon
 import com.rafaelbarbosatec.sdk.data.pokemon.repository.PokemonRepository
 import com.superdigital.poc.ui.util.extensions.asMutable
 
-class PokemonListViewModel(private val repository: PokemonRepository?): ViewModel(){
+class PokemonListViewModel(private val repository: RepositorySDK?): ViewModel(){
 
+    val repositoryPokemons = repository?.pokemon()
     val pokemons : LiveData<ArrayList<Pokemon>> = MutableLiveData()
     val progress: LiveData<Boolean> = MutableLiveData()
 
@@ -20,7 +22,7 @@ class PokemonListViewModel(private val repository: PokemonRepository?): ViewMode
 
         progress.asMutable?.value = true
 
-        repository?.pokemons { any ->
+        repositoryPokemons?.pokemons { any ->
 
             any.read({
                 pokemonsList = it
@@ -44,7 +46,7 @@ class PokemonListViewModel(private val repository: PokemonRepository?): ViewMode
     }
 
     override fun onCleared() {
-        repository?.destroy()
+        repositoryPokemons?.destroy()
         super.onCleared()
     }
 }

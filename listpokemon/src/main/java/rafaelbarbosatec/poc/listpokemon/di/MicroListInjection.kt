@@ -7,9 +7,6 @@ import rafaelbarbosatec.poc.listpokemon.PokemonListViewModel
 object MicroListInjection {
 
     val module = module {
-        factory { CreateModules.pokemonRepository(get()) }
-
-        ///ViewModels
         viewModel { PokemonListViewModel(get()) }
     }
 

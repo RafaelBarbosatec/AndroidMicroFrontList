@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimenOf10"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageview_pokemon"
+            android:layout_width="@dimen/dimenOf60"
+            android:layout_height="@dimen/dimenOf60"
+            android:layout_marginTop="@dimen/dimenOf20"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+    />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimenOf10"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/imageview_pokemon"
+            app:layout_constraintTop_toTopOf="@+id/imageview_pokemon"
+            app:layout_constraintBottom_toBottomOf="@+id/imageview_pokemon"
+    />
+
+    <View
+            android:id="@+id/view_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginTop="@dimen/dimenOf20"
+            app:layout_constraintTop_toBottomOf="@+id/imageview_pokemon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+    />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
